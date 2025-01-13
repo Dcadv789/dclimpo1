@@ -6,7 +6,7 @@ import { Button } from '@/components/ui/button';
 import { useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import { useUser } from '@/contexts/UserContext';
-import CalculatorComponent from '../Calculator';
+import { Calculator as CalculatorComponent } from '../Calculator';
 import {
   Dialog,
   DialogContent,
@@ -15,15 +15,19 @@ import {
 } from "@/components/ui/dialog";
 
 const pageNames: Record<string, string> = {
-  '/tasks/dashboard': 'Dashboard - Tasks',
+  '/tasks/dashboard': 'Dashboard - Tarefas',
   '/tasks/notes-dashboard': 'Dashboard - Notas',
+  '/tasks': 'Tarefas',
+  '/tasks/history': 'Notas',
   '/emails/dashboard': 'Dashboard - Factory',
   '/emails/template': 'Templates de E-mail',
   '/emails/sacados': 'Sacados',
   '/emails/enviar': 'Envio de E-mails',
+  '/emails/historico': 'Histórico de E-mails',
   '/relatorios/contas-semanais': 'Contas Semanais',
   '/relatorios/contas-mensais': 'Contas Mensais',
   '/relatorios/fechamento': 'Fechamento',
+  '/numero-extenso': 'Número por Extenso',
 };
 
 export default function TopBanner() {
@@ -70,7 +74,7 @@ export default function TopBanner() {
           <Dialog open={isOpen} onOpenChange={setIsOpen}>
             <DialogContent>
               <DialogHeader>
-                <DialogTitle>Calculator</DialogTitle>
+                <DialogTitle>Calculadora</DialogTitle>
               </DialogHeader>
               <CalculatorComponent />
             </DialogContent>

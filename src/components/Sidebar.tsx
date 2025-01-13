@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Plus, Minus, LayoutDashboard, Settings, BarChart2, FileText, LogOut, Home, ChevronLeft, ChevronRight, Factory, TextQuote, ListTodo } from 'lucide-react';
+import { Plus, Minus, LayoutDashboard, Settings, Home, ChevronLeft, ChevronRight, Factory, TextQuote, ListTodo, LogOut } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { Button } from '@/components/ui/button';
 import { Link, useLocation } from 'react-router-dom';
@@ -58,24 +58,6 @@ export default function Sidebar() {
       title: 'Início',
       icon: <Home className="w-5 h-5" />,
       path: '/'
-    },
-    {
-      title: 'Dashboard',
-      icon: <LayoutDashboard className="w-5 h-5" />,
-      submenu: [
-        { title: 'Overview', path: '/overview' },
-        { title: 'Analytics', path: '/analytics' },
-        { title: 'Reports', path: '/reports' },
-      ],
-    },
-    {
-      title: 'Relatórios',
-      icon: <FileText className="w-5 h-5" />,
-      submenu: [
-        { title: 'Contas Semanais', path: '/relatorios/contas-semanais' },
-        { title: 'Contas Mensais', path: '/relatorios/contas-mensais' },
-        { title: 'Fechamento', path: '/relatorios/fechamento' },
-      ],
     },
     {
       title: 'Factory',

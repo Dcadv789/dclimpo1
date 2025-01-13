@@ -59,13 +59,8 @@ export default function EmailForm({ onSubmit, customers }: EmailFormProps) {
   };
 
   const formatCurrency = (value: string) => {
-    // Remove tudo exceto números
     let numbers = value.replace(/\D/g, '');
-    
-    // Converte para número e divide por 100 para considerar centavos
     const amount = parseFloat(numbers) / 100;
-    
-    // Formata o número
     return new Intl.NumberFormat('pt-BR', {
       style: 'currency',
       currency: 'BRL',
@@ -74,31 +69,21 @@ export default function EmailForm({ onSubmit, customers }: EmailFormProps) {
 
   const handleCurrencyInput = (e: React.ChangeEvent<HTMLInputElement>) => {
     let value = e.target.value;
-    
-    // Remove o prefixo R$ e espaços
     value = value.replace(/^R\$\s?/, '');
     
-    // Se o valor estiver vazio, define como R$ 0,00
     if (!value) {
       e.target.value = 'R$ 0,00';
       form.setValue('valorTotal', 0);
       return;
     }
     
-    // Remove caracteres não numéricos
     const numericValue = value.replace(/\D/g, '');
-    
-    // Converte para número (em centavos)
     const cents = parseInt(numericValue, 10);
-    
-    // Converte centavos para reais
     const reais = cents / 100;
     
-    // Formata o valor
     const formatted = formatCurrency(numericValue);
     e.target.value = formatted;
     
-    // Atualiza o valor no formulário
     form.setValue('valorTotal', reais);
   };
 
@@ -194,7 +179,7 @@ export default function EmailForm({ onSubmit, customers }: EmailFormProps) {
               <FormItem>
                 <FormLabel>E-mail</FormLabel>
                 <FormControl>
-                  <Input {...field} type="email" readOnly />
+                  <Input {...field} type="email" />
                 </FormControl>
                 <FormMessage />
               </FormItem>
